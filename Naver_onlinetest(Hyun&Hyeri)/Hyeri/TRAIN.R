@@ -1,7 +1,6 @@
-WWTRAIN<-read.table('C:/Users/USER/Documents/Naver(정&현)/Analysis of Wine Quality Data/white_wine_stratified_TRAIN.csv', header = T, sep = ',')
-library(car)
-options(digits=5)
-options(scipen=999)
+WWTRAIN<-read.table('C:/Users/renz/Documents/GitHub/naverstudy/Naver_onlinetest(Hyun&Hyeri)/Hyeri/white_wine_stratified_TRAIN.csv', header = T, sep = ',')
+drops = 'X'
+WWTRAIN <- WWTRAIN[,!(names(WWTRAIN) %in% drops)]
 
 Qfit1 <- lm(quality ~ ., data=WWTRAIN)
 summary(Qfit1)
@@ -41,7 +40,7 @@ plot(pred.val, residuals(Qfit5))
 ts.plot(residuals(Qfit5))
 residualPlots(Qfit5, pch=19, col="grey", cex=0.6)
 
-#이상관측치
+#?鵑?????치
 require(car)
 influencePlot(Qfit5,  id.method="identify", main="Influence Plot", sub="Circle size is proportial to Cook's Distance" )
 
